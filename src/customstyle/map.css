@@ -1,0 +1,13 @@
+
+.mapStyles{
+    height: 100vh;
+    width: 90vh;
+}
+
+.information-modal{
+    width: 20%;
+    height: 200px;
+    background-color: white;
+    float: center;
+}
+  

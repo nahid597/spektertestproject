@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project i created for testing purpose. This project given by spekter software compay to test my skill. This is simple google map api project. That track the current location and pointed to that location. when anyone click this marker a modal will be open. Within this modal user can see there current position latitude and longitude.
 
 ## Available Scripts
 

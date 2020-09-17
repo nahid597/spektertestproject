@@ -18,7 +18,8 @@ const GoogleMap = (props) => {
 
     const [latLng, setLatLng] = useState({
         lat: 24.666,
-        lng: 88.564
+        lng: 88.564,
+        name: name
     });
     const [openInformationModal, setOpenInformationModal] = useState(false);
 
@@ -30,20 +31,16 @@ const GoogleMap = (props) => {
       navigator.geolocation.getCurrentPosition((position) => {
         setLatLng({
             lat: position.coords.latitude,
-            lng: position.coords.longitude
+            lng: position.coords.longitude,
+            name: name
         });
       })
       
-  }, []);
+  },[name]);
 
   const onSubmitButton = (e) => {
       e.preventDefault();
-      var lat = e.target.userLat.value;
-      var lng = e.target.userLng.value;
-      var name = e.target.userName.value;
-      console.log(lat);
-      console.log(lng);
-      console.log(name);
+      console.log(latLng);
       setOpenInformationModal(!openInformationModal);
   }
 
@@ -65,11 +62,11 @@ const GoogleMap = (props) => {
                     <ModalBody>
                         <form onSubmit={(e) => onSubmitButton(e)} className="form-group">
                             <label for="userLat">UserLat</label>
-                            <input id="userLat" className="form-control" type="text" name="userLat" value={latLng.lat}  />
+                            <input id="userLat" className="form-control" type="text" name="userLat" value={latLng.lat} onChange={(e) => setLatLng({...latLng, lat: e.target.value}) } />
                             <label for="userLng">UserLng</label>
-                            <input id="userLng" className="form-control" type="text" name="userLng" value={latLng.lng} />
+                            <input id="userLng" className="form-control" type="text" name="userLng" value={latLng.lng} onChange={(e) => setLatLng({...latLng, lng: e.target.value}) } />
                             <label for="userName">UserName</label>
-                            <input id="userName" className="form-control" type="text" name="userName" value={name} />
+                            <input id="userName" className="form-control" type="text" name="userName" value={latLng.name} onChange={(e) => setLatLng({...latLng, name: e.target.value}) } />
                             <br />
                             <button type="submit" className="btn btn-primary">Submit</button>
                         </form>
